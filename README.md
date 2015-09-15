@@ -1,7 +1,7 @@
 # term-frequency
 A simple [term frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_frequency_2 ) library that takes in a document vector, and compiles the frequency calculation of your choosing.
 
-First make the necessary `require`ments
+First make the necessary `require-ments`
 
 ```javascript
 var tv = require('term-vector');
