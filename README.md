@@ -1,9 +1,18 @@
 # term-frequency
-A simple [term frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_frequency_2 ) library.
+A simple [term frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_frequency_2 ) library that takes in a document vector, and compiles the frequency calculation of your choosing.
 
-You could do:
+First make the necessary `require`ments
 
 ```javascript
+var tv = require('term-vector');
+var tf = require('term-frequency');
+```
+
+
+You can then do:
+
+```javascript
+var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
 var freq = tf.getTermFrequency(vec);
 // freq is now
 // [ [ 'cool', 1 ], [ 'really', 2 ], [ 'vector', 2 ] ];
@@ -12,6 +21,7 @@ var freq = tf.getTermFrequency(vec);
 Or you can specify a TF scheme like so:
 
 ```javascript
+var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
 var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'});
 // freq is now:
 // [
