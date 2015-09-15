@@ -1,5 +1,5 @@
 # term-frequency
-A simple [term frequency](see https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_frequency_2 ) library.
+A simple [term frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_frequency_2 ) library.
 
 You could do:
 
