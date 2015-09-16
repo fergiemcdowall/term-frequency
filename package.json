@@ -1,6 +1,6 @@
 {
   "name": "term-frequency",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple term frequency lib",
   "main": "lib/term-frequency.js",
   "scripts": {

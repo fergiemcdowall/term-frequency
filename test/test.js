@@ -32,5 +32,25 @@ describe('Does term-frequency play nice?', function(){
     ]);
   })
 
+  it('simple raw term frequency plus weighting', function(){
+    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
+    var freq = tf.getTermFrequency(vec, {weight: 2});
+    freq.should.eql([ [ 'cool', 3 ], [ 'really', 4 ], [ 'vector', 4 ] ]);
+  })
+
+
+  it('term frequency using double log normalization 0.5', function(){
+    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
+    var freq = tf.getTermFrequency(vec, {
+      scheme: 'doubleLogNormalization0.5', 
+      weight: 5
+    });
+    freq.should.eql([
+      [ 'cool', 5.7027325540540822 ],
+      [ 'really', 5.9581453659370776 ],
+      [ 'vector', 5.9581453659370776 ] 
+    ]);
+  })
+
 
 })

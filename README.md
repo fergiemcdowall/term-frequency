@@ -33,3 +33,19 @@ var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'});
 
 Currently supported schemes are `raw`, `logNormalization`, and
 `doubleLogNormalization0.5`. See the [Wikipedia page](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) for more info
+
+You can also `weight` your calculations like so. A weight is a numeric
+value that will be added to the calculated score.
+
+```javascript
+var freq = tf.getTermFrequency(vec, {
+  scheme: 'doubleLogNormalization0.5', 
+  weight: 5
+});
+// freq is now
+// [
+//   [ 'cool', 5.7027325540540822 ],
+//   [ 'really', 5.9581453659370776 ],
+//   [ 'vector', 5.9581453659370776 ] 
+// ]);
+```
