@@ -1,3 +1,5 @@
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
+
 # term-frequency
 A simple [term frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_frequency_2 ) library that takes in a document vector, and compiles the frequency calculation of your choosing.
 
@@ -49,3 +51,13 @@ var freq = tf.getTermFrequency(vec, {
 //   [ 'vector', 5.9581453659370776 ] 
 // ]);
 ```
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/term-frequency
+[npm-version-image]: http://img.shields.io/npm/v/term-frequency.svg?style=flat
+[npm-downloads-image]: http://img.shields.io/npm/dm/term-frequency.svg?style=flat
+
+[travis-url]: http://travis-ci.org/fergiemcdowall/term-frequency
+[travis-image]: http://img.shields.io/travis/fergiemcdowall/term-frequency.svg?style=flat
