@@ -17,7 +17,7 @@ You can then do:
 var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
 var freq = tf.getTermFrequency(vec);
 // freq is now
-// [ [ 'cool', 1 ], [ 'really', 2 ], [ 'vector', 2 ] ];
+// [ [ [ 'cool' ], 1 ], [ [ 'really' ], 2 ], [ [ 'vector' ], 2 ] ];
 ```
 
 Or you can specify a TF scheme like so:
@@ -27,9 +27,9 @@ var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor
 var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'});
 // freq is now:
 // [
-//   [ 'cool', 0.6931471805599453 ],
-//   [ 'really', 1.0986122886681098 ],
-//   [ 'vector', 1.0986122886681098 ]
+//   [ [ 'cool' ], 0.6931471805599453 ],
+//   [ [ 'really' ], 1.0986122886681098 ],
+//   [ [ 'vector' ], 1.0986122886681098 ]
 // ]);
 ```
 
@@ -46,9 +46,9 @@ var freq = tf.getTermFrequency(vec, {
 });
 // freq is now
 // [
-//   [ 'cool', 5.7027325540540822 ],
-//   [ 'really', 5.9581453659370776 ],
-//   [ 'vector', 5.9581453659370776 ] 
+//   [ [ 'cool' ], 5.7027325540540822 ],
+//   [ [ 'really' ], 5.9581453659370776 ],
+//   [ [ 'vector' ], 5.9581453659370776 ] 
 // ]);
 ```
 

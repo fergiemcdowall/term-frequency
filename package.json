@@ -1,15 +1,17 @@
 {
   "name": "term-frequency",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple term frequency lib",
-  "main": "lib/term-frequency.js",
+  "main": "index.js",
   "scripts": {
+    "lint": "standard",
     "test": "mocha"
   },
   "devDependencies": {
     "mocha": "2.3.2",
     "should": "7.1.0",
-    "term-vector": "0.0.12"
+    "standard": "^6.0.8",
+    "term-vector": "0.0.14"
   },
   "dependencies": {
     "lodash": "3.10.1"
