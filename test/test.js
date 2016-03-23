@@ -6,6 +6,22 @@ var tv = require('term-vector')
 var tf = require('../')
 
 describe('Does term-frequency play nice?', function () {
+
+  it('should handle empty doc vector', function () {
+    var freq = tf.getTermFrequency([])
+    freq.should.eql([])
+  })
+
+  it('should handle null doc vector', function () {
+    var freq = tf.getTermFrequency(null)
+    freq.should.eql([])
+  })
+
+  it('should handle undefined doc vector', function () {
+    var freq = tf.getTermFrequency(undefined)
+    freq.should.eql([])
+  })
+
   it('simple raw term frequency', function () {
     var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor')
     should.exist(vec)

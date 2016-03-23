@@ -5,6 +5,13 @@ exports.getTermFrequency = function (docVector, options) {
     scheme: 'raw',
     weight: 0
   })
+  //handle empty docVector
+  if (!docVector) {
+    return []
+  }
+  if (docVector.length == 0) {
+    return []
+  }
   if (options.scheme === 'logNormalization') {
     return docVector.map(function (item) {
       return [item[0], +options.weight + Math.log(1 + (+item[1]))]
