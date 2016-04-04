@@ -1,7 +1,7 @@
-var _ = require('lodash')
+var _defaults = require('lodash.defaults')
 
 exports.getTermFrequency = function (docVector, options) {
-  options = _.defaults(options || {}, {
+  options = _defaults(options || {}, {
     scheme: 'raw',
     weight: 0
   })
@@ -17,9 +17,9 @@ exports.getTermFrequency = function (docVector, options) {
       return [item[0], +options.weight + Math.log(1 + (+item[1]))]
     })
   } else if (options.scheme === 'doubleLogNormalization0.5') {
-    var maxFreq = _(docVector).sortBy(function (n) {
-      return n[1]
-    }).last()[1]
+    var maxFreq = docVector.sort(function (a, b) {
+      a[1] - b[1]
+    })[docVector.length - 1][1]
     return docVector.map(function (item) {
       return [item[0], +options.weight + 0.5 + ((Math.log((0.5 + (+item[1])))) / maxFreq)]
     })

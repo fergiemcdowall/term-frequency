@@ -1,6 +1,6 @@
 {
   "name": "term-frequency",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple term frequency lib",
   "main": "index.js",
   "scripts": {
@@ -8,13 +8,13 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "2.3.2",
-    "should": "7.1.0",
+    "mocha": "^2.3.2",
+    "should": "^7.1.0",
     "standard": "^6.0.8",
-    "term-vector": "0.0.14"
+    "term-vector": "0.0.17"
   },
   "dependencies": {
-    "lodash": "3.10.1"
+    "lodash.defaults": "^4.0.1"
   },
   "repository": {
     "type": "git",
