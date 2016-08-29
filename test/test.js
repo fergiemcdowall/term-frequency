@@ -3,10 +3,10 @@
 
 var should = require('should')
 var tv = require('term-vector')
+var sw = require('stopword')
 var tf = require('../')
 
 describe('Does term-frequency play nice?', function () {
-
   it('should handle empty doc vector', function () {
     var freq = tf.getTermFrequency([])
     freq.should.eql([])
@@ -23,7 +23,13 @@ describe('Does term-frequency play nice?', function () {
   })
 
   it('simple raw term frequency', function () {
-    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor')
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        'This is a really, really cool vector. I like this VeCTor'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
     should.exist(vec)
     var freq = tf.getTermFrequency(vec)
     freq.should.eql([
@@ -34,7 +40,13 @@ describe('Does term-frequency play nice?', function () {
   })
 
   it('term frequency using logNormalization', function () {
-    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor')
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        'This is a really, really cool vector. I like this VeCTor'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
     var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'})
     freq.should.eql([
       [ [ 'cool' ], 0.6931471805599453 ],
@@ -44,7 +56,13 @@ describe('Does term-frequency play nice?', function () {
   })
 
   it('term frequency using double log normalization 0.5', function () {
-    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor')
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        'This is a really, really cool vector. I like this VeCTor'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
     var freq = tf.getTermFrequency(vec, {scheme: 'doubleLogNormalization0.5'})
     freq.should.eql([
       [ [ 'cool' ], 0.7027325540540822 ],
@@ -54,7 +72,13 @@ describe('Does term-frequency play nice?', function () {
   })
 
   it('simple raw term frequency plus weighting', function () {
-    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor')
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        'This is a really, really cool vector. I like this VeCTor'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
     var freq = tf.getTermFrequency(vec, {weight: 2})
     freq.should.eql([
       [ [ 'cool' ], 3 ],
@@ -64,7 +88,13 @@ describe('Does term-frequency play nice?', function () {
   })
 
   it('term frequency using double log normalization 0.5', function () {
-    var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor')
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        'This is a really, really cool vector. I like this VeCTor'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
     var freq = tf.getTermFrequency(vec, {
       scheme: 'doubleLogNormalization0.5',
       weight: 5

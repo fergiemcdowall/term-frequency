@@ -6,15 +6,22 @@ A simple [term frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Term_freq
 First make the necessary `require-ments`
 
 ```javascript
-var tv = require('term-vector');
+var sw = require('stopword')
 var tf = require('term-frequency');
+var tv = require('term-vector');
 ```
 
 
 You can then do:
 
 ```javascript
-var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
+var vec = tv.getVector(
+  sw.removeStopwords(
+    'This is a really, really cool vector. I like this VeCTor'
+      .toLowerCase()
+      .split(/[ ,\.]+/)
+  )
+)
 var freq = tf.getTermFrequency(vec);
 // freq is now
 // [ [ [ 'cool' ], 1 ], [ [ 'really' ], 2 ], [ [ 'vector' ], 2 ] ];

@@ -4,14 +4,14 @@
   "description": "A simple term frequency lib",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
-    "test": "mocha"
+    "test": "mocha && standard"
   },
   "devDependencies": {
     "mocha": "^2.3.2",
     "should": "^7.1.0",
     "standard": "^6.0.8",
-    "term-vector": "0.0.18"
+    "standard-format": "^2.2.3",
+    "term-vector": "0.1.1"
   },
   "dependencies": {
     "lodash.defaults": "^4.0.1"

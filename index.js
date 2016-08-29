@@ -5,11 +5,11 @@ exports.getTermFrequency = function (docVector, options) {
     scheme: 'raw',
     weight: 0
   })
-  //handle empty docVector
+  // handle empty docVector
   if (!docVector) {
     return []
   }
-  if (docVector.length == 0) {
+  if (docVector.length === 0) {
     return []
   }
   if (options.scheme === 'logNormalization') {
