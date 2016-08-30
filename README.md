@@ -42,10 +42,11 @@ var freq = tf.getTermFrequency(vec, {scheme: tf.logNormalization});
 
 Currently supported schemes are
 
-* `self`
 * `raw`
 * `logNormalization`
 * `doubleLogNormalization0point5`
+* `selfString`
+* `selfNumeric`
 
 See the [Wikipedia page](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) for more info about term frequency calculation
 

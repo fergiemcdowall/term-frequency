@@ -106,7 +106,7 @@ describe('Does term-frequency play nice?', function () {
     ])
   })
 
-  it('term frequency using self', function () {
+  it('term frequency using selfString', function () {
     var vec = tv.getVector(
       sw.removeStopwords(
         'This is a really, really cool vector. I like this VeCTor'
@@ -115,7 +115,7 @@ describe('Does term-frequency play nice?', function () {
       )
     )
     var freq = tf.getTermFrequency(vec, {
-      scheme: tf.self,
+      scheme: tf.selfString,
       weight: 5
     })
     freq.should.eql([
@@ -123,5 +123,48 @@ describe('Does term-frequency play nice?', function () {
       [ [ 'really' ], 'really' ],
       [ [ 'vector' ], 'vector' ]
     ])
+  })
+
+  it('term frequency using selfNumeric', function () {
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        '200 20 88 822 934532 1 0 48738 29'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
+    var freq = tf.getTermFrequency(vec, {
+      scheme: tf.selfNumeric
+    })
+    freq.should.eql(
+      [ [ [ '20' ], 20 ],
+        [ [ '200' ], 200 ],
+        [ [ '29' ], 29 ],
+        [ [ '48738' ], 48738 ],
+        [ [ '822' ], 822 ],
+        [ [ '88' ], 88 ],
+        [ [ '934532' ], 934532 ] ])
+  })
+
+  it('term frequency using selfNumeric, handle string', function () {
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        '200 20 88 822 bollocks 934532 1 0 48738 29'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
+    var freq = tf.getTermFrequency(vec, {
+      scheme: tf.selfNumeric
+    })
+    freq.should.eql(
+      [ [ [ '20' ], 20 ],
+        [ [ '200' ], 200 ],
+        [ [ '29' ], 29 ],
+        [ [ '48738' ], 48738 ],
+        [ [ '822' ], 822 ],
+        [ [ '88' ], 88 ],
+        [ [ '934532' ], 934532 ],
+        [ [ 'bollocks' ], NaN ] ])
   })
 })

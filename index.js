@@ -3,7 +3,8 @@ var _defaults = require('lodash.defaults')
 exports.doubleLogNormalization0point5 = 'doubleLogNormalization0point5'
 exports.logNormalization = 'logNormalization'
 exports.raw = 'raw'
-exports.self = 'self'
+exports.selfString = 'selfString'
+exports.selfNumeric = 'selfNumeric'
 
 exports.getTermFrequency = function (docVector, options) {
   options = _defaults(options || {}, {
@@ -32,9 +33,13 @@ exports.getTermFrequency = function (docVector, options) {
     return docVector.map(function (item) {
       return [item[0], +options.weight + item[1]]
     })
-  } else if (options.scheme === 'self') {
+  } else if (options.scheme === 'selfString') {
     return docVector.map(function (item) {
-      return [item[0], item[0][0]]
+      return [item[0], item[0][0] + '']
+    })
+  } else if (options.scheme === 'selfNumeric') {
+    return docVector.map(function (item) {
+      return [item[0], +options.weight + +item[0][0]]
     })
   }
 }
