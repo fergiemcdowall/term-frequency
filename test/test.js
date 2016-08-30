@@ -47,7 +47,7 @@ describe('Does term-frequency play nice?', function () {
           .split(/[ ,\.]+/)
       )
     )
-    var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'})
+    var freq = tf.getTermFrequency(vec, {scheme: tf.logNormalization})
     freq.should.eql([
       [ [ 'cool' ], 0.6931471805599453 ],
       [ [ 'really' ], 1.0986122886681098 ],
@@ -63,7 +63,7 @@ describe('Does term-frequency play nice?', function () {
           .split(/[ ,\.]+/)
       )
     )
-    var freq = tf.getTermFrequency(vec, {scheme: 'doubleLogNormalization0.5'})
+    var freq = tf.getTermFrequency(vec, {scheme: tf.doubleLogNormalization0point5})
     freq.should.eql([
       [ [ 'cool' ], 0.7027325540540822 ],
       [ [ 'really' ], 0.9581453659370776 ],
@@ -96,13 +96,32 @@ describe('Does term-frequency play nice?', function () {
       )
     )
     var freq = tf.getTermFrequency(vec, {
-      scheme: 'doubleLogNormalization0.5',
+      scheme: tf.doubleLogNormalization0point5,
       weight: 5
     })
     freq.should.eql([
       [ [ 'cool' ], 5.7027325540540822 ],
       [ [ 'really' ], 5.9581453659370776 ],
       [ [ 'vector' ], 5.9581453659370776 ]
+    ])
+  })
+
+  it('term frequency using self', function () {
+    var vec = tv.getVector(
+      sw.removeStopwords(
+        'This is a really, really cool vector. I like this VeCTor'
+          .toLowerCase()
+          .split(/[ ,\.]+/)
+      )
+    )
+    var freq = tf.getTermFrequency(vec, {
+      scheme: tf.self,
+      weight: 5
+    })
+    freq.should.eql([
+      [ [ 'cool' ], 'cool' ],
+      [ [ 'really' ], 'really' ],
+      [ [ 'vector' ], 'vector' ]
     ])
   })
 })

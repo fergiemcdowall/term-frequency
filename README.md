@@ -31,7 +31,7 @@ Or you can specify a TF scheme like so:
 
 ```javascript
 var vec = tv.getVector('This is a really, really cool vector. I like this VeCTor');
-var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'});
+var freq = tf.getTermFrequency(vec, {scheme: tf.logNormalization});
 // freq is now:
 // [
 //   [ [ 'cool' ], 0.6931471805599453 ],
@@ -40,8 +40,14 @@ var freq = tf.getTermFrequency(vec, {scheme: 'logNormalization'});
 // ]);
 ```
 
-Currently supported schemes are `raw`, `logNormalization`, and
-`doubleLogNormalization0.5`. See the [Wikipedia page](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) for more info
+Currently supported schemes are
+
+* `self`
+* `raw`
+* `logNormalization`
+* `doubleLogNormalization0point5`
+
+See the [Wikipedia page](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) for more info about term frequency calculation
 
 You can also `weight` your calculations like so. A weight is a numeric
 value that will be added to the calculated score.
