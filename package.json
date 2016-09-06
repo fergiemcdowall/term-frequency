@@ -1,6 +1,6 @@
 {
   "name": "term-frequency",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A simple term frequency lib",
   "main": "index.js",
   "scripts": {

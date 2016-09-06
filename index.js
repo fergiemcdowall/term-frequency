@@ -25,7 +25,7 @@ exports.getTermFrequency = function (docVector, options) {
   } else if (options.scheme === 'doubleLogNormalization0point5') {
     var maxFreq = docVector.sort(function (a, b) {
       a[1] - b[1]
-    })[docVector.length - 1][1]
+    })[0][1]
     return docVector.map(function (item) {
       return [item[0], +options.weight + 0.5 + ((Math.log((0.5 + (+item[1])))) / maxFreq)]
     })
