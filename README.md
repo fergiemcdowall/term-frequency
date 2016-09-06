@@ -44,7 +44,7 @@ Currently supported schemes are
 
 * `raw`
 * `logNormalization`
-* `doubleLogNormalization0point5`
+* `doubleNormalization0point5`
 * `selfString`
 * `selfNumeric`
 
@@ -55,7 +55,7 @@ value that will be added to the calculated score.
 
 ```javascript
 var freq = tf.getTermFrequency(vec, {
-  scheme: 'doubleLogNormalization0.5', 
+  scheme: tf.doubleNormalization0point5, 
   weight: 5
 });
 // freq is now

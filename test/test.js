@@ -63,11 +63,11 @@ describe('Does term-frequency play nice?', function () {
           .split(/[ ,\.]+/)
       )
     )
-    var freq = tf.getTermFrequency(vec, {scheme: tf.doubleLogNormalization0point5})
+    var freq = tf.getTermFrequency(vec, {scheme: tf.doubleNormalization0point5})
     freq.should.eql([
-      [ [ 'cool' ], 0.9054651081081644 ],
-      [ [ 'really' ], 1.416290731874155 ],
-      [ [ 'vector' ], 1.416290731874155 ]
+      [ [ 'really' ], 1 ],
+      [ [ 'vector' ], 1 ],
+      [ [ 'cool' ], 0.75 ]
     ])
   })
 
@@ -87,7 +87,7 @@ describe('Does term-frequency play nice?', function () {
     ])
   })
 
-  it('term frequency using double log normalization 0.5', function () {
+  it('term frequency using double log normalization 0.5 and weighting', function () {
     var vec = tv.getVector(
       sw.removeStopwords(
         'This is a really, really cool vector. I like this VeCTor'
@@ -96,13 +96,13 @@ describe('Does term-frequency play nice?', function () {
       )
     )
     var freq = tf.getTermFrequency(vec, {
-      scheme: tf.doubleLogNormalization0point5,
+      scheme: tf.doubleNormalization0point5,
       weight: 5
     })
     freq.should.eql([
-      [ [ 'cool' ], 5.905465108108165 ],
-      [ [ 'really' ], 6.416290731874155 ],
-      [ [ 'vector' ], 6.416290731874155 ]
+      [ [ 'really' ], 6 ],
+      [ [ 'vector' ], 6 ],
+      [ [ 'cool' ], 5.75 ]
     ])
   })
 
@@ -197,11 +197,11 @@ describe('Does term-frequency play nice?', function () {
       'fruit salad fruit big big big fruit fruit'.split(' ')
     )
     should.exist(vec)
-    var freq = tf.getTermFrequency(vec, {scheme: tf.doubleLogNormalization0point5})
+    var freq = tf.getTermFrequency(vec, {scheme: tf.doubleNormalization0point5})
     freq.should.eql([
-      [ [ 'big' ], 0.9175876561651226 ],
-      [ [ 'fruit' ], 1.001359132258758 ],
-      [ [ 'salad' ], 0.6351550360360548 ]
+      [ [ 'fruit' ], 1 ],
+      [ [ 'big' ], 0.875 ],
+      [ [ 'salad' ], 0.625 ]
     ])
   })
 })

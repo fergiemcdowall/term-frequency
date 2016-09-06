@@ -1,6 +1,6 @@
 var _defaults = require('lodash.defaults')
 
-exports.doubleLogNormalization0point5 = 'doubleLogNormalization0point5'
+exports.doubleNormalization0point5 = 'doubleNormalization0point5'
 exports.logNormalization = 'logNormalization'
 exports.raw = 'raw'
 exports.selfString = 'selfString'
@@ -22,12 +22,12 @@ exports.getTermFrequency = function (docVector, options) {
     return docVector.map(function (item) {
       return [item[0], +options.weight + Math.log(1 + (+item[1]))]
     })
-  } else if (options.scheme === 'doubleLogNormalization0point5') {
+  } else if (options.scheme === 'doubleNormalization0point5') {
     var maxFreq = docVector.sort(function (a, b) {
-      a[1] - b[1]
+      return b[1] - a[1]
     })[0][1]
     return docVector.map(function (item) {
-      return [item[0], +options.weight + 0.5 + ((Math.log((0.5 + (+item[1])))) / maxFreq)]
+      return [item[0], +options.weight + 0.5 + ((0.5 * +item[1]) / (maxFreq))]
     })
   } else if (options.scheme === 'raw') {
     return docVector.map(function (item) {
