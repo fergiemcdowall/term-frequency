@@ -157,7 +157,9 @@ describe('Does term-frequency play nice?', function () {
       scheme: tf.selfNumeric
     })
     freq.should.eql(
-      [ [ [ '20' ], 20 ],
+      [ [ [ '0' ], 0 ],
+        [ [ '1' ], 1 ],
+        [ [ '20' ], 20 ],
         [ [ '200' ], 200 ],
         [ [ '29' ], 29 ],
         [ [ '48738' ], 48738 ],
@@ -178,7 +180,9 @@ describe('Does term-frequency play nice?', function () {
       scheme: tf.selfNumeric
     })
     freq.should.eql(
-      [ [ [ '20' ], 20 ],
+      [ [ [ '0' ], 0 ],
+        [ [ '1' ], 1 ],
+        [ [ '20' ], 20 ],
         [ [ '200' ], 200 ],
         [ [ '29' ], 29 ],
         [ [ '48738' ], 48738 ],
