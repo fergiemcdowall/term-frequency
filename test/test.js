@@ -189,7 +189,7 @@ describe('Does term-frequency play nice?', function () {
         [ [ '822' ], 822 ],
         [ [ '88' ], 88 ],
         [ [ '934532' ], 934532 ],
-        [ [ 'bollocks' ], NaN ] ])
+        [ [ 'bollocks' ], 'bollocks' ] ])
   })
 
   it('does proper log normalisation', function () {

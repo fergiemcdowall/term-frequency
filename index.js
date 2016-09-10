@@ -39,7 +39,12 @@ exports.getTermFrequency = function (docVector, options) {
     })
   } else if (options.scheme === 'selfNumeric') {
     return docVector.map(function (item) {
-      return [item[0], +options.weight + +item[0][0]]
+      var value = item[0][0]
+      // try to cast to number
+      if (!isNaN(parseFloat(value)) && isFinite(value)) {
+        value = +options.weight + +item[0][0]
+      }
+      return [item[0], value]
     })
   }
 }
