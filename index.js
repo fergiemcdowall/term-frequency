@@ -1,5 +1,3 @@
-var _defaults = require('lodash.defaults')
-
 exports.doubleNormalization0point5 = 'doubleNormalization0point5'
 exports.logNormalization = 'logNormalization'
 exports.raw = 'raw'
@@ -7,10 +5,10 @@ exports.selfString = 'selfString'
 exports.selfNumeric = 'selfNumeric'
 
 exports.getTermFrequency = function (docVector, options) {
-  options = _defaults(options || {}, {
+  options = Object.assign({}, {
     scheme: 'raw',
     weight: 0
-  })
+  }, options)
   // handle empty docVector
   if (!docVector) {
     return []
